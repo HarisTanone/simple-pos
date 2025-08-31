@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\Api\FoodController;
 use App\Http\Controllers\Api\TableController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/tables', [TableController::class, 'index']);
 Route::get('/tables/available', [TableController::class, 'available']);
 Route::get('/tables/{id}', [TableController::class, 'show']);
+
+
+Route::apiResource('foods', FoodController::class);
+Route::get('/foods/category/{category}', [FoodController::class, 'category']);

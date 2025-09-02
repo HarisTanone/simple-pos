@@ -18,7 +18,10 @@ class TableResource extends JsonResource
             'id' => $this->id,
             'table_number' => $this->table_number,
             'capacity' => $this->capacity,
-            'status' => $this->status
+            'status' => $this->status->description,
+            'current_order' => $this->whenLoaded('currentOrder', function () {
+                return new OrderResource($this->currentOrder);
+            }),
         ];
     }
 }
